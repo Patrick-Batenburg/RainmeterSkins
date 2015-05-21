@@ -1,0 +1,330 @@
+
+
+
+;+------------------------------------- 
+;   主体代码浏览
+;+-------------------------------------
+
+ ;主菜单_____________________
+ [nil0]          ;这是主菜单的透明背景，当使用[Rainmeter]下的MouseOverAction和MouseLeaveAction可能会用到。
+ [main0]         ;加号按钮
+     [main0high] ;高亮加号按钮
+ [main1]         ;苹果按钮
+     [main1high] ;高亮
+ [main2]         ;机器人按钮
+     [main2high]
+ [main3]         ;运行按钮
+     [main3high]
+ [main4]         ;齿轮按钮
+     [main4high]
+ ;主菜单结束________________
+ 
+ ;main1_____________________
+ ;苹果按钮展开的次级菜单（次级菜单1）
+ [main1nil]          ;次级菜单1透明背景，功能同[nil0]
+ [m1Tri]             ;三角形，已废弃
+   [m1Item1]         ;第一个项目（项目1）的背景，白色矩形
+     [m1Item1High]   ;项目1高亮背景
+   [m1Item2]         ;项目2（注意项目2与其他项目使用的背景图片不同）
+     [m1Item2High]   ;高亮
+   [m1Item3]         ;项目3
+     [m1Item3High]
+ 
+     [m1Item1Ico]    ;项目1的图标。高亮时更换图片。
+     [m1Item2Ico]    ;项目2图标
+     [m1Item3Ico]
+   
+     [m1Item1String] ;项目1文本。高亮时更改字体颜色，由#FontColor#改为#FontColorHigh#
+     [m1Item2String]
+     [m1Item3String]
+
+ ;main1_Item1____________________
+ ;次级菜单1项目1展开的末级菜单(次1末级菜单1)
+ [m1Item1nil]           ;透明背景，同[nil0]
+ [m1Item1Tri]           ;菜单的三角形图片
+ [m1Item1Border]        ;菜单的左侧垂直透明渐变线
+   [m1Item1Item1]       ;次1末级菜单1的第一个项目的背景
+     [m1Item1Item1High] ;背景高亮
+   [m1Item1Item2]       ;第2个项目
+     [m1Item1Item2High] ;高亮
+   [m1Item1Item3]
+     [m1Item1Item3High]
+     
+   [m1Item1Item1Ico]    ;项目1图标
+   [m1Item1Item2Ico]    ;项目2图标
+   [m1Item1Item3Ico]
+   
+   [m1Item1Item1String] ;项目1文本
+   [m1Item1Item2String]
+   [m1Item1Item3String]
+   
+ ;main1_Item1_结束___________________
+ 
+ ;main1_Item2____________________
+ ;次1末级菜单2，全部同上
+ [m1Item2nil]
+ [m1Item2Tri]
+ [m1Item2Border]
+   [m1Item2Item1]
+     [m1Item2Item1High]
+   [m1Item2Item2]
+     [m1Item2Item2High]
+   [m1Item2Item3]
+     [m1Item2Item3High]
+     
+   [m1Item2Item1Ico]
+   [m1Item2Item2Ico]
+   [m1Item2Item3Ico]
+   
+   [m1Item2Item1String]
+   [m1Item2Item2String]
+   [m1Item2Item3String]
+   
+ ;main1_Item2_结束___________________  
+ 
+ ;main1_Item3____________________  
+ ;次1末级菜单3，全部同上
+ [m1Item3nil]
+ [m1Item3Tri]
+ [m1Item3Border]
+   [m1Item3Item1]
+     [m1Item3Item1High]
+   [m1Item3Item2]
+     [m1Item3Item2High]
+   [m1Item3Item3]
+     [m1Item3Item3High]
+     
+   [m1Item3Item1Ico]
+   [m1Item3Item2Ico]
+   [m1Item3Item3Ico]
+   
+   [m1Item3Item1String]
+   [m1Item3Item2String]
+   [m1Item3Item3String]
+   
+ ;main1_Item3_结束___________________  
+ ;main1_结束___________________  
+ 
+ ;main2____________________  
+ 机器人图标展开的菜单，同上，略；以下均同上，略
+ ;main2_结束___________________  
+
+
+;+------------------------------------- 
+;   Style声明
+;+-------------------------------------
+
+[mnItemnIitemsStyle]
+  ;所有末级菜单项目背景公用格式
+  ;这里的关于鼠标动作的声明已经失效
+  
+[mnItemnStringStyle]
+  ;所有末级菜单项目文本公用格式
+  
+[mnItemnIconStyle]
+  ;所有末级菜单项目图标公用格式
+
+[mnItemsStyle]
+  ;所有次级菜单项目背景公用格式
+  ;鼠标移入时本项目背景的高亮图标透明度改为#FocusAlpha#
+  ;移出时改为#HiddenAlpha#。
+  ;实际上[mnItemnIitemsStyle]与这里代码完全相同，但为了以后可能的不同，将两者分别声明
+  
+[mnItemsHighStyle]
+  ;所有项目高亮背景公用格式
+  ;包括次级菜单项目和末级菜单项目
+  
+[MainStyle]
+  ;所有主菜单图标公用格式
+  ;鼠标动作
+  ;当鼠标移入时将本图标的高亮图标透明度改为#FocusAlpha#
+  ;移出时改为#HiddenAlpha#
+  ;注意这里没有使用Hide与show，而是使用图片透明度ImageAlpha
+  
+[MainHighStyle]
+  ;主菜单图标高亮公用格式
+ 
+[nilStyle]
+  ;为各个菜单透明背景声明的公用格式，已废弃且未关联
+
+
+;+------------------------------------- 
+;   Group分组
+;+-------------------------------------
+
+组nil
+;各种透明背景——主菜单的透明背景和次级菜单、末级菜单的透明背景
+
+组main0 = main0 + main0high
+;主菜单中加号图标(mian0)不包含弹出菜单，用于显示其他主菜单。它与它的高亮图标(main0high)被分为main0。
+
+组mainn = main1 +main2 +main3 +main4
+;主菜单中，除加号图标以外的菜单图标(不含高亮)
+;也就是说“main”和非零数字组成的Meter
+
+组mainh = mian1high + ... +mian4high
+;上者高亮图标
+
+组main = 组mainn + 组mainh
+;主菜单中，除加号图标以外的菜单图标及其高亮
+;mainn与mianh的并集
+
+
+组m1
+;苹果图标弹出次级菜单、末级菜单的所有物体(透明背景、项目背景、图标、文本、三角形、渐变线)
+
+组mn = 组m1 + 组m2 + 组m3
+;除却主菜单外所有物体；所有次级菜单、末级菜单的所有物体
+
+组mian1
+;次级菜单的全部东西；单击苹果按钮将弹出的东西(透明背景、项目背景、图标、文本)
+
+组mnTri = m1Tri + m1Item2Tri + m1Item2Border + ...
+;三角形和渐变线
+;m1Tri与m2Tri等已停用
+
+组mnItems = m1Item1 + ... + m4Item3 - 组mnItemTris
+;所有次级菜单所有项目背景(不含高亮)，去除特殊项目——含三角的项目
+;
+
+组mnItemshigh = m1Item1High + ... + m4Item3High - 组mnItemTrishigh
+;所有次级菜单所有项目高亮背景，去除特殊项目——含三角的项目
+
+组mnItemTris = m1Item2 + m2Item2 + m3Item2 + m4Item2
+;所有次级菜单中含有三角形的项目的背景
+;这非常特殊，请注意
+;运行按钮的次级菜单只有一个run项目，这个项目时m3Item2。m3Item1没有书写。
+
+组mnItemTrishigh = m1Item2High + m2Item2High + m3Item2High + m4Item2High
+;前者的高亮背景
+
+组mnItemnIcon = m1Item1Ico + ... + m4Item4Ico
+;所有次级菜单的所有图标
+
+组mnItemnString = m1Item1String + ... + m4Item4String
+;所有次级菜单的所有文本
+
+
+组m1Item1
+;次1末级菜单1；单击次级菜单1项目1弹出的所有物体
+
+组mnItemn = 组m1Item1 + 组m1Item2 + ... + 组m4Item3
+;注意不要和mnItems混淆
+;所有末级菜单包含的所有物体
+
+组mnItemnItems = m1Item1Item1 + ... + m4Item3Item3
+;所有末级菜单的所有项目的背景(不含高亮)
+
+组mnItemnItemshigh = m1Item1Item1High + ... + m4Item3Item3High
+;所有末级菜单的所有项目的高亮背景
+
+组mnItemnIcon
+;所有末级菜单所有项目的图标
+
+组mnItemnString
+;所有末级菜单所有项目的文本
+
+
+;+------------------------------------- 
+;   Variable:内部命令
+;+-------------------------------------
+
+play=
+;播放点击菜单的音效
+
+mnItemsResetAction=
+;重置次级菜单
+;在次级菜单中，取消项目背景的高亮固定 - 取消Ico1~4的高亮 - 取消String的高亮 - 隐藏末级菜单 - 音效
+
+mainResetAction=
+;重置主菜单
+;重置次级菜单 - 隐藏次末级菜单 - 不透明化main0、mainn - 取消main1、mian2、main3、main4高亮
+
+main0Action=
+;加号按钮动作
+;重置主菜单 - 显示/隐藏主菜单其他图标 - 显示/隐藏主菜单其他图标的高亮
+
+main1Action=
+;苹果按钮动作
+;重置主菜单 - 显示次级菜单1 - 透明化main0、mainn - 不透明化main1 - 高亮main1
+
+main2Action=
+main3Action=
+main4Action=
+;同上
+
+m1Item1Action=
+;次级菜单1项目1动作
+;重置次级菜单 - 项目1背景高亮固定 - Ico1高亮 - String1高亮反透明 - 显示末级菜单m1Item1
+m1Item2Action=
+;同上
+m1Item3Action=
+;同上
+
+m1Item1Item1ActionOver=
+;次1末级菜单1项目1鼠标移入动作
+;高亮项目背景 - 高亮String - 高亮Ico
+m1Item1Item2ActionOver=
+m1Item1Item3ActionOver=
+m1Item1Item1ActionLeave=
+;次1末级菜单1项目1鼠标移出动作
+;取消高亮项目背景 - 取消高亮String - 取消高亮Ico
+;下同，略
+m1Item1Item2ActionLeave=
+m1Item1Item3ActionLeave=
+...
+
+m3Item2Action=
+;次级菜单3项目2动作
+;重置次级菜单 - 项目2背景高亮固定 - Ico2高亮 - String2高亮反透明 - 显示末级菜单m3Item2 - [!PluginBang "m3Item2Input ExecuteBatch 1"]
+
+
+;+------------------------------------- 
+;   新建菜单的基本步骤
+;+-------------------------------------
+
+exg. 在主菜单新建第6个图标(main5)及其子菜单
+
+1 变量声明。
+   制定菜单的图标文本运行命令等
+
+2 变量声明： 内部命令。
+  2.1 在mnItemsResetAction中补充新的“取消Ico高亮”语句
+  2.2 在mainResetAction中补充新的“取消mian5高亮”语句
+  2.3 在“;Variables:主菜单_”下补充新的main5Action
+  2.4 复制从“;Variables:次级菜单1_”到“;Variables:次级菜单2_”前(行245-行278)的所有代码，利用正则表达式替换全部m1(非Item1)为m5。粘贴于[Variables]的最后，[nil0]之前。
+  
+3 [main5]与[main5high]
+
+4 复制从“;Menu1_”到“;Menu2_”前(行428-行869)的所有代码，利用这则表达式替换全部m1(非Item1)为m5，替换所有main1为main5。粘贴于[m4Item3Item3String]之后[mnItemnIitemsStyle]之前
+
+5 以上
+
+exg2. 在机器人图标下的次级菜单新建第5个项目，及其子菜单
+
+1 变量声明。
+   制定菜单的图标文本运行命令等
+
+2 变量声明： 内部命令。
+  2.1 在mnItemsResetAction中补充新的“取消Ico高亮”语句
+  2.2 新建m2Item5Action
+  2.3 新建“;Variables:次2末级菜单5”及其下代码
+ 
+3 新建次级菜单2项目5[m2Item5]和[m2Item5High]
+
+4 对次级菜单2进行补正
+  4.1 补正菜单起始点位置，即[m2Item1]的Y坐标值
+  4.2 补正“含三角形项目”，即
+    4.2.1 补正[m2Item2][m2Item2High]所属组
+    4.2.2 补正[m2Item2][m2Item2High]的图片ImageName
+    4.2.3 补正[m2Item2]的X值
+  4.3 新的“含三角形项目”，即
+    4.2.1 补正[m2Item3][m2Item3High]所属组
+    4.3.2 补正[m2Item3][m2Item3High]的图片ImageName
+    4.3.3 补正[m2Item3]的X值
+5 新建次级菜单2项目5图标与文本，[m2Item5Ico]与[m2Item5String]
+6 新建“;Menu2Submenu5_”及其下代码。
+7 以上
+
+
+  
